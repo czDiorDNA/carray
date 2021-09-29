@@ -180,7 +180,7 @@ func TestPushTailOverFlow(t *testing.T) {
 }
 
 func TestRemove(t *testing.T) {
-	arr := MakeCArray(4, func(elem *(interface{}), data interface{}) bool {
+	arr := MakeCArray(4, func(elem *(interface{}), data interface{}, arr *CArray) bool {
 		realElem, ok := (*elem).(int)
 		if !ok {
 			t.Errorf("Wrong CArray Element Type")
