@@ -64,6 +64,16 @@ func (arr *CArray) Full() bool {
 	return arr.count == arr.cap
 }
 
+func (arr *CArray) Front() *CArray {
+	if arr.Empty() { return nil }
+	return arr.buf[arr.front]
+}
+
+func (arr *CArray) Tail()) *CArray {
+	if arr.Empty() { return nil }
+	return arr.buf[arr.tail]
+}
+
 func (arr *CArray) PushHeader(elem interface{}) bool {
 	if !arr.checkElem(elem) {
 		panic(plainError("CArray.PushHeader: type of elem is different from the first"))
