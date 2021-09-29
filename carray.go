@@ -43,7 +43,7 @@ type CArray struct {
 	remove func (elem *(interface{}), data interface{}, arr *CArray) bool
 }
 
-func MakeCArray(cap int, remove func (elem *(interface{}), data interface{}) bool, arr *CArray) *CArray {
+func MakeCArray(cap int, remove func (elem *(interface{}), data interface{}, arr *CArray) bool) *CArray {
 	if cap <= 0 {
 		panic(plainError("MakeCArray: size must be a positive number"))
 	}
