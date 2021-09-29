@@ -64,12 +64,12 @@ func (arr *CArray) Full() bool {
 	return arr.count == arr.cap
 }
 
-func (arr *CArray) Front() *CArray {
+func (arr *CArray) Front() interface{} {
 	if arr.Empty() { return nil }
 	return arr.buf[arr.front]
 }
 
-func (arr *CArray) Tail()) *CArray {
+func (arr *CArray) Tail() interface{} {
 	if arr.Empty() { return nil }
 	return arr.buf[arr.tail]
 }
