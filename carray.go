@@ -40,10 +40,10 @@ type CArray struct {
 	// tail is the position of tail element in buf.
 	tail int
 	// remove is the function whether to remove the element with data, return true if need removed.
-	remove func (elem *(interface{}), data interface{}) bool
+	remove func (elem *(interface{}), data interface{}, arr *CArray) bool
 }
 
-func MakeCArray(cap int, remove func (elem *(interface{}), data interface{}) bool) *CArray {
+func MakeCArray(cap int, remove func (elem *(interface{}), data interface{}) bool, arr *CArray) *CArray {
 	if cap <= 0 {
 		panic(plainError("MakeCArray: size must be a positive number"))
 	}
@@ -128,7 +128,7 @@ func (arr *CArray) Remove(data interface{}, front bool) (interface{}, bool) {
 	if !front {
 		elem = arr.buf[arr.tail]
 	}
-	if arr.remove(&elem, data) {
+	if arr.remove(&elem, data, arr) {
 		if front {
 			arr.PopFront()
 		} else {
